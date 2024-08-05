@@ -1,0 +1,112 @@
+from nltk.util import ngrams
+from collections import Counter, defaultdict
+
+
+text = "This is the book which I read last night."
+
+tokens = text.lower().split()
+
+
+unigrams = tokens
+unigram_freq = Counter(unigrams)
+
+
+bigrams = list(ngrams(tokens, 2))
+bigram_freq = Counter(bigrams)
+
+
+trigrams = list(ngrams(tokens, 3))
+trigram_freq = Counter(trigrams)
+
+
+bigram_probabilities = defaultdict(lambda: defaultdict(lambda: 0))
+for w1, w2 in bigrams:
+    bigram_probabilities[w1][w2] += 1
+
+for w1 in bigram_probabilities:
+    total_count = float(sum(bigram_probabilities[w1].values()))
+    for w2 in bigram_probabilities[w1]:
+        bigram_probabilities[w1][w2] /= total_count
+
+
+def predict_next_word(word, n=1):
+    next_words = bigram_probabilities[word]
+    sorted_next_words = sorted(next_words.items(), key=lambda item: item[1], reverse=True)
+    return [word for word, prob in sorted_next_words[:n]]
+
+
+unigram_freq, bigram_freq, trigram_freq, bigram_probabilities, predict_next_word("text", 3)from nltk.util import ngrams
+from collections import Counter, defaultdict
+
+
+text = "This is the book which I read last night."
+
+tokens = text.lower().split()
+
+
+unigrams = tokens
+unigram_freq = Counter(unigrams)
+
+
+bigrams = list(ngrams(tokens, 2))
+bigram_freq = Counter(bigrams)
+
+
+trigrams = list(ngrams(tokens, 3))
+trigram_freq = Counter(trigrams)
+
+
+bigram_probabilities = defaultdict(lambda: defaultdict(lambda: 0))
+for w1, w2 in bigrams:
+    bigram_probabilities[w1][w2] += 1
+
+for w1 in bigram_probabilities:
+    total_count = float(sum(bigram_probabilities[w1].values()))
+    for w2 in bigram_probabilities[w1]:
+        bigram_probabilities[w1][w2] /= total_count
+
+
+def predict_next_word(word, n=1):
+    next_words = bigram_probabilities[word]
+    sorted_next_words = sorted(next_words.items(), key=lambda item: item[1], reverse=True)
+    return [word for word, prob in sorted_next_words[:n]]
+
+
+unigram_freq, bigram_freq, trigram_freq, bigram_probabilities, predict_next_word("text", 3)from nltk.util import ngrams
+from collections import Counter, defaultdict
+
+
+text = "This is the book which I read last night."
+
+tokens = text.lower().split()
+
+
+unigrams = tokens
+unigram_freq = Counter(unigrams)
+
+
+bigrams = list(ngrams(tokens, 2))
+bigram_freq = Counter(bigrams)
+
+
+trigrams = list(ngrams(tokens, 3))
+trigram_freq = Counter(trigrams)
+
+
+bigram_probabilities = defaultdict(lambda: defaultdict(lambda: 0))
+for w1, w2 in bigrams:
+    bigram_probabilities[w1][w2] += 1
+
+for w1 in bigram_probabilities:
+    total_count = float(sum(bigram_probabilities[w1].values()))
+    for w2 in bigram_probabilities[w1]:
+        bigram_probabilities[w1][w2] /= total_count
+
+
+def predict_next_word(word, n=1):
+    next_words = bigram_probabilities[word]
+    sorted_next_words = sorted(next_words.items(), key=lambda item: item[1], reverse=True)
+    return [word for word, prob in sorted_next_words[:n]]
+
+
+unigram_freq, bigram_freq, trigram_freq, bigram_probabilities, predict_next_word("text", 3)vvv
